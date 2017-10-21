@@ -7,6 +7,10 @@
 [![License](http://img.shields.io/:license-apache-blue.svg?style=flat)](https://github.com/docker-java/docker-java/blob/master/LICENSE)
 
 <!--[![Circle CI](https://circleci.com/gh/docker-java/docker-java.svg?style=svg)](https://circleci.com/gh/docker-java/docker-java)-->
+# Jenkins windows slaves support
+
+Add the functionality required for spawing windows slaves ondemand using jenkins docker plugin
+
 # docker-java 
 
 Java API client for [Docker](http://docs.docker.io/ "Docker")
