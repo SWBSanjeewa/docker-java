@@ -26,6 +26,7 @@ import com.github.dockerjava.api.command.DockerCmdExecFactory;
 import com.github.dockerjava.api.command.EventsCmd;
 import com.github.dockerjava.api.command.ExecCreateCmd;
 import com.github.dockerjava.api.command.ExecStartCmd;
+import com.github.dockerjava.api.command.ExecStartCmdSync;
 import com.github.dockerjava.api.command.InfoCmd;
 import com.github.dockerjava.api.command.InspectContainerCmd;
 import com.github.dockerjava.api.command.InspectExecCmd;
@@ -79,6 +80,7 @@ import com.github.dockerjava.core.command.DisconnectFromNetworkCmdImpl;
 import com.github.dockerjava.core.command.EventsCmdImpl;
 import com.github.dockerjava.core.command.ExecCreateCmdImpl;
 import com.github.dockerjava.core.command.ExecStartCmdImpl;
+import com.github.dockerjava.core.command.ExecStartCmdSyncImpl;
 import com.github.dockerjava.core.command.InfoCmdImpl;
 import com.github.dockerjava.core.command.InpectNetworkCmdImpl;
 import com.github.dockerjava.core.command.InspectContainerCmdImpl;
@@ -324,6 +326,12 @@ public class DockerClientImpl implements Closeable, DockerClient {
     public ExecStartCmd execStartCmd(String execId) {
         return new ExecStartCmdImpl(getDockerCmdExecFactory().createExecStartCmdExec(), execId);
     }
+    
+    @Override
+    public ExecStartCmdSync execStartCmdSync(String execId) {
+        return new ExecStartCmdSyncImpl(getDockerCmdExecFactory().createExecStartCmdSyncExec(), execId);
+    }
+    
 
     @Override
     public InspectExecCmd inspectExecCmd(String execId) {

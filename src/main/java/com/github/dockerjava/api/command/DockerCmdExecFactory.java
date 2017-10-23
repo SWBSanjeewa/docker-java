@@ -53,6 +53,8 @@ public interface DockerCmdExecFactory extends Closeable {
     AttachContainerCmd.Exec createAttachContainerCmdExec();
 
     ExecStartCmd.Exec createExecStartCmdExec();
+    
+    ExecStartCmdSync.Exec createExecStartCmdSyncExec();
 
     InspectExecCmd.Exec createInspectExecCmdExec();
 

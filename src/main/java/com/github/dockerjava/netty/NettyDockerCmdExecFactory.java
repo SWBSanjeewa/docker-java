@@ -18,6 +18,7 @@ import com.github.dockerjava.api.command.DockerCmdExecFactory;
 import com.github.dockerjava.api.command.EventsCmd;
 import com.github.dockerjava.api.command.ExecCreateCmd;
 import com.github.dockerjava.api.command.ExecStartCmd;
+import com.github.dockerjava.api.command.ExecStartCmdSync;
 import com.github.dockerjava.api.command.InfoCmd;
 import com.github.dockerjava.api.command.InspectContainerCmd;
 import com.github.dockerjava.api.command.InspectExecCmd;
@@ -72,6 +73,7 @@ import com.github.dockerjava.netty.exec.DisconnectFromNetworkCmdExec;
 import com.github.dockerjava.netty.exec.EventsCmdExec;
 import com.github.dockerjava.netty.exec.ExecCreateCmdExec;
 import com.github.dockerjava.netty.exec.ExecStartCmdExec;
+import com.github.dockerjava.netty.exec.ExecStartCmdSyncExec;
 import com.github.dockerjava.netty.exec.InfoCmdExec;
 import com.github.dockerjava.netty.exec.InspectContainerCmdExec;
 import com.github.dockerjava.netty.exec.InspectExecCmdExec;
@@ -456,6 +458,11 @@ public class NettyDockerCmdExecFactory implements DockerCmdExecFactory {
     @Override
     public ExecStartCmd.Exec createExecStartCmdExec() {
         return new ExecStartCmdExec(getBaseResource(), getDockerClientConfig());
+    }
+    
+    @Override
+    public ExecStartCmdSync.Exec createExecStartCmdSyncExec() {
+        return new ExecStartCmdSyncExec(getBaseResource(), getDockerClientConfig());
     }
 
     @Override

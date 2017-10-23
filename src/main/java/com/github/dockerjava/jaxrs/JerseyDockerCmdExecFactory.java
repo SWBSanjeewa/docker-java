@@ -53,6 +53,8 @@ import com.github.dockerjava.api.command.DockerCmdExecFactory;
 import com.github.dockerjava.api.command.EventsCmd;
 import com.github.dockerjava.api.command.ExecCreateCmd;
 import com.github.dockerjava.api.command.ExecStartCmd;
+import com.github.dockerjava.api.command.ExecStartCmdSync;
+import com.github.dockerjava.api.command.ExecStartCmdSync.Exec;
 import com.github.dockerjava.api.command.InfoCmd;
 import com.github.dockerjava.api.command.InspectContainerCmd;
 import com.github.dockerjava.api.command.InspectExecCmd;
@@ -376,6 +378,11 @@ public class JerseyDockerCmdExecFactory implements DockerCmdExecFactory {
     public ExecCreateCmd.Exec createExecCmdExec() {
         return new ExecCreateCmdExec(getBaseResource(), getDockerClientConfig());
     }
+    
+    @Override
+	public ExecStartCmdSync.Exec createExecStartCmdSyncExec() {
+    	return new ExecStartCmdSyncExec(getBaseResource(), getDockerClientConfig());
+	}
 
     @Override
     public RemoveContainerCmd.Exec createRemoveContainerCmdExec() {
@@ -588,5 +595,7 @@ public class JerseyDockerCmdExecFactory implements DockerCmdExecFactory {
         this.clientRequestFilters = clientRequestFilters;
         return this;
     }
+
+	
 
 }
